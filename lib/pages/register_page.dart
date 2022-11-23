@@ -30,7 +30,6 @@ class _RegisterPageState extends State<RegisterPage> {
     _firstNameController.dispose();
     _lastNameController.dispose();
     _ageController.dispose();
-
     super.dispose();
   }
 
