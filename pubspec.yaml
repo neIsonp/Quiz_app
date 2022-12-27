@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.1.2
   google_fonts: ^3.0.1
   cloud_firestore: ^4.1.0
+  lottie: ^2.1.0
 
 dev_dependencies:
   flutter_test:

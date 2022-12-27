@@ -19,8 +19,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-  final _ageController = TextEditingController();
 
   @override
   void dispose() {
@@ -28,8 +26,6 @@ class _RegisterPageState extends State<RegisterPage> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _firstNameController.dispose();
-    _lastNameController.dispose();
-    _ageController.dispose();
     super.dispose();
   }
 
@@ -37,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
     showDialog(
       context: context,
       builder: ((context) {
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       }),
     );
 
@@ -49,8 +45,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
       addUserDetails(
         _firstNameController.text.trim(),
-        _lastNameController.text.trim(),
-        int.parse(_ageController.text.trim()),
         _emailController.text.trim(),
       );
     }
@@ -58,12 +52,9 @@ class _RegisterPageState extends State<RegisterPage> {
     Navigator.of(context).pop();
   }
 
-  Future addUserDetails(
-      String firstName, String lastName, int age, String email) async {
+  Future addUserDetails(String firstName, String email) async {
     await FirebaseFirestore.instance.collection('utils').add({
       'first name': firstName,
-      'last name': lastName,
-      'age': age,
       'email': email,
     });
   }
@@ -112,53 +103,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: const BorderSide(color: Colors.deepPurple),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
-                      hintText: 'First Name',
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: TextField(
-                    controller: _lastNameController,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      border: InputBorder.none,
-                      hintText: 'Last Name',
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: TextField(
-                    controller: _ageController,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      border: InputBorder.none,
-                      hintText: 'Age',
+                      hintText: 'Name',
                       fillColor: Colors.grey[100],
                       filled: true,
                     ),

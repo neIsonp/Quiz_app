@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 import 'forgot_password_page.dart';
 
@@ -22,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
 
@@ -51,21 +52,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.android,
-                  size: 100,
-                ),
-                const SizedBox(height: 30),
-                Text(
-                  "Hello Again!",
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 52,
-                  ),
+                LottieBuilder.network(
+                  'https://assets1.lottiefiles.com/packages/lf20_md2b3ywy.json',
+                  width: 250,
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Welcome back you've been missed!",
-                  style: TextStyle(fontSize: 20),
+                Text(
+                  "Boa sorte!",
+                  style: GoogleFonts.pressStart2p(
+                    fontSize: 20,
+                  ),
                 ),
                 const SizedBox(height: 50),
                 Padding(
@@ -128,9 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                           );
                         },
                         child: const Text(
-                          'Forgot your Password?',
+                          'Esqueceste a senha?',
                           style: TextStyle(
-                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -149,13 +144,12 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.deepPurple,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          "Sign in",
-                          style: TextStyle(
+                          "Jogar",
+                          style: GoogleFonts.pressStart2p(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
                           ),
                         ),
                       ),
@@ -167,17 +161,17 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Not a member?',
+                      'Não és jogador?',
                       style: TextStyle(
+                        color: Colors.grey,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     InkWell(
                       onTap: widget.showRegisterPage,
                       child: const Text(
-                        ' Register now',
+                        ' Criar conta',
                         style: TextStyle(
-                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
