@@ -19,28 +19,39 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  bool obscureText = true;
+
   Future signIn() async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Center(
-          child: LottieBuilder.network(
-            'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
-            repeat: true,
-            width: 200,
-          ),
-        );
-      },
-    );
+    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Preencha tudo corretamente!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: LottieBuilder.network(
+              'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
+              repeat: true,
+              width: 200,
+            ),
+          );
+        },
+      );
 
-    Future.delayed(const Duration(seconds: 1));
+      Future.delayed(const Duration(seconds: 1));
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
 
-    Navigator.of(context).pop();
+      Navigator.of(context).pop();
+    }
   }
 
   @override
@@ -97,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextField(
                     controller: _passwordController,
-                    obscureText: true,
+                    obscureText: obscureText,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -106,6 +117,19 @@ class _LoginPageState extends State<LoginPage> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
+                      ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        child: obscureText
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(
+                                Icons.visibility,
+                                color: Colors.green,
+                              ),
                       ),
                       border: InputBorder.none,
                       hintText: 'Password',

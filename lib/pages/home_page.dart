@@ -13,58 +13,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
 
-  List<String> docIds = [];
-
-  Future getDocId() async {
-    await FirebaseFirestore.instance.collection('utils').get().then(
-      (snapshot) {
-        snapshot.docs.forEach(
-          (document) {
-            docIds.add(document.reference.id);
-          },
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('signed in as ${user!.email}'),
-            MaterialButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.deepPurple[200],
-              child: const Text(
-                'Sign out',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Expanded(
-              child: FutureBuilder(
-                future: getDocId(),
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    itemCount: docIds.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: GetUserName(documentId: docIds[index]),
-                      );
-                    },
-                  );
-                },
-              ),
-            )
-          ],
-        ),
+      appBar: AppBar(
+        title: Text(user!.email.toString()),
+        actions: [
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
+      drawer: Drawer(
+          child: ListView(
+        children: [
+          UserAccountsDrawerHeader(
+            accountName: Text(user!.displayName.toString()),
+            accountEmail: Text(user!.email.toString()),
+          )
+        ],
+      )),
     );
   }
 }

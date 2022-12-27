@@ -16,7 +16,6 @@ class GetUserName extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
           return Text('first name: ${data['first name']}');
         }
-
         return const Text('loading');
       }),
     );

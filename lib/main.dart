@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:login_app_firebase/auth/main_page.dart';
+import 'package:login_app_firebase/pages/home_page.dart';
+import 'package:login_app_firebase/pages/home_page_test.dart';
+import 'package:login_app_firebase/utils/app_routes.dart';
 import 'pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -16,9 +19,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      routes: {
+        AppRoutes.mainPage: (ctx) => MainPage(),
+        AppRoutes.HomePage: (ctx) => HomePage(),
+      },
     );
   }
 }
