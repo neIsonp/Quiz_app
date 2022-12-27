@@ -23,9 +23,17 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+          child: LottieBuilder.network(
+            'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
+            repeat: true,
+            width: 200,
+          ),
+        );
       },
     );
+
+    Future.delayed(const Duration(seconds: 1));
 
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text.trim(),
@@ -45,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -74,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: const BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
@@ -96,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: const BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
@@ -141,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.green,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(

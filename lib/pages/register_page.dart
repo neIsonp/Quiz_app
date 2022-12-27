@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -33,7 +34,13 @@ class _RegisterPageState extends State<RegisterPage> {
     showDialog(
       context: context,
       builder: ((context) {
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+          child: LottieBuilder.network(
+            'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
+            repeat: true,
+            width: 200,
+          ),
+        );
       }),
     );
 
@@ -69,30 +76,25 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.android,
-                  size: 100,
+                LottieBuilder.network(
+                  'https://assets6.lottiefiles.com/packages/lf20_jcikwtux.json',
+                  width: 250,
                 ),
-                const SizedBox(height: 30),
                 Text(
-                  "Hello there!",
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 52,
+                  "Criar Jogador",
+                  style: GoogleFonts.pressStart2p(
+                    fontSize: 20,
+                    color: Colors.green,
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  "Register below with your details!",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextField(
@@ -103,11 +105,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.deepPurple),
+                        borderSide: const BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
-                      hintText: 'Name',
+                      hintText: 'Nome',
                       fillColor: Colors.grey[100],
                       filled: true,
                     ),
@@ -124,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
@@ -146,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
@@ -168,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       border: InputBorder.none,
@@ -186,12 +188,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.green,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Center(
                         child: Text(
-                          "Sign up",
+                          "Registrar",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -207,17 +209,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'I am a member?',
+                      'És jogador?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: Colors.grey,
                       ),
                     ),
                     InkWell(
                       onTap: widget.showLoginPage,
                       child: const Text(
-                        ' Login now',
+                        ' logar',
                         style: TextStyle(
-                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

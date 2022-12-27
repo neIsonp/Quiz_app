@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:login_app_firebase/auth/main_page.dart';
+import 'package:login_app_firebase/pages/login_page.dart';
+import 'package:lottie/lottie.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -48,19 +52,29 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const MainPage();
+                },
+              ),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+          color: Colors.green,
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Text(
-              'Enter your email and we will send to you a password reset link',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
+          LottieBuilder.network(
+            'https://assets10.lottiefiles.com/packages/lf20_bnofreve.json',
+            width: 250,
           ),
           const SizedBox(height: 10),
           Padding(
@@ -69,11 +83,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               controller: _emailController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple),
+                  borderSide: const BorderSide(color: Colors.green),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 border: InputBorder.none,
@@ -83,12 +97,29 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-          MaterialButton(
-            onPressed: passwordReset,
-            child: Text('Reset password'),
-            color: Colors.deepPurple[200],
-          )
+          const SizedBox(height: 20),
+          InkWell(
+            onTap: passwordReset,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Resetar",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
