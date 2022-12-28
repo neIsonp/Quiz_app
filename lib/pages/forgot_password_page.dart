@@ -72,8 +72,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LottieBuilder.network(
-            'https://assets10.lottiefiles.com/packages/lf20_bnofreve.json',
+          LottieBuilder.asset(
+            'assets/lottie/forgot-password.json',
             width: 250,
           ),
           const SizedBox(height: 10),

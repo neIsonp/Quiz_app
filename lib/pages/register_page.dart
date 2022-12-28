@@ -35,8 +35,8 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       builder: ((context) {
         return Center(
-          child: LottieBuilder.network(
-            'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
+          child: LottieBuilder.asset(
+            'assets/lottie/loading-animation-blue.json',
             repeat: true,
             width: 200,
           ),
@@ -44,19 +44,21 @@ class _RegisterPageState extends State<RegisterPage> {
       }),
     );
 
-    if (passwordConfirm()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
+    Future.delayed(const Duration(seconds: 1)).then((_) async {
+      if (passwordConfirm()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
 
-      addUserDetails(
-        _firstNameController.text.trim(),
-        _emailController.text.trim(),
-      );
-    }
+        addUserDetails(
+          _firstNameController.text.trim(),
+          _emailController.text.trim(),
+        );
+      }
 
-    Navigator.of(context).pop();
+      Navigator.of(context).pop();
+    });
   }
 
   Future addUserDetails(String firstName, String email) async {
@@ -83,8 +85,8 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                LottieBuilder.network(
-                  'https://assets6.lottiefiles.com/packages/lf20_jcikwtux.json',
+                LottieBuilder.asset(
+                  'assets/lottie/profile-user-card.json',
                   width: 250,
                 ),
                 Text(

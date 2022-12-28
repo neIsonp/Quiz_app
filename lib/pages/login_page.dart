@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Preencha tudo corretamente!'),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
         ),
       );
     } else {
@@ -34,8 +34,8 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return Center(
-            child: LottieBuilder.network(
-              'https://assets7.lottiefiles.com/packages/lf20_3gcp51t9.json',
+            child: LottieBuilder.asset(
+              'assets/lottie/loading-animation-blue.json',
               repeat: true,
               width: 200,
             ),
@@ -43,14 +43,14 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
 
-      Future.delayed(const Duration(seconds: 1));
+      Future.delayed(const Duration(milliseconds: 100)).then((_) async {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-
-      Navigator.of(context).pop();
+        Navigator.of(context).pop();
+      });
     }
   }
 
@@ -71,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                LottieBuilder.network(
-                  'https://assets1.lottiefiles.com/packages/lf20_md2b3ywy.json',
+                LottieBuilder.asset(
+                  'assets/lottie/game-animation.json',
                   width: 250,
                 ),
                 const SizedBox(height: 10),
@@ -175,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(12),
-                      ),g
+                      ),
                       child: Center(
                         child: Text(
                           "Jogar",

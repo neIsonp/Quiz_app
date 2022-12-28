@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:lottie/lottie.dart';
 
 import '../utils/app_routes.dart';
 
@@ -20,7 +21,6 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
 
   void signOut() {
     FirebaseAuth.instance.signOut();
-
     Navigator.of(context).pushNamed(AppRoutes.mainPage);
   }
 
@@ -30,6 +30,13 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: LottieBuilder.network(
+                'https://assets1.lottiefiles.com/packages/lf20_gxzsp3c5.json',
+                width: 50,
+              ),
+            ),
             accountName: const Text('Nelson'),
             accountEmail: Text(widget.user!.email.toString()),
           ),
