@@ -175,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(12),
-                      ),
+                      ),g
                       child: Center(
                         child: Text(
                           "Jogar",

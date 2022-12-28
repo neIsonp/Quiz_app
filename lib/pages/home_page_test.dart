@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_app_firebase/read%20data/get_user_name.dart';
+import 'package:login_app_firebase/repository/get_user_name.dart';
 
 class HomePageTest extends StatefulWidget {
   const HomePageTest({super.key});
