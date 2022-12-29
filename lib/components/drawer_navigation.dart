@@ -16,7 +16,7 @@ class DrawerNavigation extends StatefulWidget {
 
 class _DrawerNavigationState extends State<DrawerNavigation> {
   void _navigationTo({required BuildContext context, required String page}) {
-    Navigator.of(context).pushReplacementNamed(page);
+    Navigator.of(context).pushNamed(page);
   }
 
   void signOut() {
@@ -30,6 +30,13 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/images/background-image-for-navigation-drawer.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.white,
               child: LottieBuilder.network(

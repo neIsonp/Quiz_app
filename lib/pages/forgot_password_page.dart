@@ -56,14 +56,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const MainPage();
-                },
-              ),
-            );
+            Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.green,
