@@ -5,6 +5,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:login_app_firebase/components/drawer_navigation.dart';
 
+import '../models/user_model.dart';
+import 'home_page.dart';
+
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({super.key});
 
@@ -33,6 +36,30 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
         ),
       ),
       drawer: DrawerNavigation(user: user),
+      body: StreamBuilder<List<UserModel>>(
+        stream: readUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text('algo de errado: ${snapshot.hasError}');
+          } else if (snapshot.hasData) {
+            final users = snapshot.data;
+
+            return ListView(
+              children: users!.map(buildUser).toList(),
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
+      ),
     );
   }
+
+  Widget buildUser(UserModel user) => ListTile(
+        leading: CircleAvatar(
+          child: Text('${user.pontos}'),
+        ),
+        title: Text(user.name),
+        subtitle: Text(user.email),
+      );
 }

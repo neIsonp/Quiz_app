@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_app_firebase/models/user_model.dart';
 import 'package:lottie/lottie.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -51,21 +52,25 @@ class _RegisterPageState extends State<RegisterPage> {
           password: _passwordController.text.trim(),
         );
 
-        addUserDetails(
-          _firstNameController.text.trim(),
-          _emailController.text.trim(),
-        );
+        addUserDetails(UserModel(
+          name: _firstNameController.text,
+          email: _emailController.text,
+          pontos: 0,
+        ));
       }
 
       Navigator.of(context).pop();
     });
   }
 
-  Future addUserDetails(String firstName, String email) async {
-    await FirebaseFirestore.instance.collection('utils').add({
-      'first name': firstName,
-      'email': email,
-    });
+  Future addUserDetails(UserModel user) async {
+    final userDoc = FirebaseFirestore.instance
+        .collection('utils')
+        .doc(_emailController.text);
+
+    final json = user.toJson();
+
+    await userDoc.set(json);
   }
 
   bool passwordConfirm() {

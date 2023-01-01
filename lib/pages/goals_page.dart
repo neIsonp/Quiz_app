@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../components/drawer_navigation.dart';
+import '../models/user_model.dart';
+import 'home_page.dart';
 
 class GoalsPage extends StatefulWidget {
   const GoalsPage({super.key});
@@ -33,6 +35,7 @@ class _GoalsPageState extends State<GoalsPage> {
         ),
       ),
       drawer: DrawerNavigation(user: user),
+  
     );
   }
 }

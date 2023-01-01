@@ -3,8 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:login_app_firebase/components/drawer_navigation.dart';
+import 'package:login_app_firebase/data/current_user_data.dart';
+import 'package:login_app_firebase/repository/firestore_helper.dart';
 import 'package:login_app_firebase/repository/get_user_name.dart';
 import 'package:login_app_firebase/utils/app_routes.dart';
+
+import '../models/user_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,33 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser;
-
-  List<String> docIds = [];
-
-  Future getDocId() async {
-    await FirebaseFirestore.instance.collection('utils').get().then(
-      (snapshot) {
-        snapshot.docs.forEach(
-          (document) {
-            docIds.add(document.reference.id);
-          },
-        );
-      },
-    );
-  }
+  var user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerNavigation(user: user),
-      body: getBody(),
-    );
-  }
-
-  Widget getBody() {
-    return SingleChildScrollView(
-      child: Column(
+      drawer: DrawerNavigation(),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -50,7 +34,20 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           getNavigation(),
-          const SizedBox(height: 35),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 35),
+            child: Column(
+              children: const [
+                Text(
+                  'Outros jogadores',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -105,126 +102,144 @@ class _HomePageState extends State<HomePage> {
 
   Widget AppBarBalance() {
     var size = MediaQuery.of(context).size;
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Container(
-          width: size.width,
-          height: 200,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                spreadRadius: 10,
-                blurRadius: 10,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Row(
+
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance
+          .collection('utils')
+          .doc(user!.email)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                width: size.width,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 10,
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 10,
-                              height: 10,
-                              decoration: const BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
+                            Flexible(
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.blue,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Nome',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black.withOpacity(0.5),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 3),
+                                      Text(
+                                        snapshot.data!['name'],
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
-                            const SizedBox(width: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nome',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black.withOpacity(0.5),
+                            Flexible(
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.green,
+                                      shape: BoxShape.circle,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: 3),
-                                const Text(
-                                  'Nelson',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )
-                              ],
+                                  const SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Pontos',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black.withOpacity(0.5),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 3),
+                                      Text(
+                                        snapshot.data!['pontos'].toString(),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ),
-                      ),
-                      Flexible(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 10,
-                              height: 10,
-                              decoration: const BoxDecoration(
-                                color: Colors.green,
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            const SizedBox(width: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Pontos',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black.withOpacity(0.5),
-                                  ),
-                                ),
-                                const SizedBox(height: 3),
-                                const Text(
-                                  '16',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
+                        const SizedBox(height: 17),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Tens cerca de 16 pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
                         ),
-                      )
-                    ],
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(AppRoutes.goalsPage);
+                          },
+                          child: const Text('Ver mais'),
+                        )
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 17),
-                  const Divider(),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'Tens cerca de 16 pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(AppRoutes.goalsPage);
-                    },
-                    child: const Text('Ver mais'),
-                  )
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ),
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
     );
+
+    //
   }
 
   Widget getNavigation() {
@@ -327,20 +342,24 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget listPlayers() {
-    return FutureBuilder(
-      future: getDocId(),
-      builder: (context, snapshot) {
-        return ListView.builder(
-          itemCount: docIds.length,
-          itemBuilder: ((context, index) {
-            return ListTile(
-              title: GetUserName(documentId: docIds[index]),
-              leading: const Icon(Icons.person),
-            );
-          }),
-        );
-      },
-    );
-  }
+  Widget buildUser(UserModel user) => ListTile(
+        leading: CircleAvatar(
+          child: Text('${user.pontos}'),
+        ),
+        title: Text(user.name),
+        subtitle: Text(user.email),
+      );
+}
+
+Stream<List<UserModel>> readUsers() =>
+    FirebaseFirestore.instance.collection('utils').snapshots().map((snapshot) =>
+        snapshot.docs.map((docs) => UserModel.fromJson(docs.data())).toList());
+
+Future<DocumentSnapshot> getCurrentUser() async {
+  final user = FirebaseAuth.instance.currentUser;
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  CollectionReference usersCollection = firestore.collection('utils');
+  DocumentSnapshot currentUser = await usersCollection.doc(user!.email).get();
+  return currentUser;
 }
