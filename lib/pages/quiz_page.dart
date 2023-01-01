@@ -32,7 +32,6 @@ class _QuizPageState extends State<QuizPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      drawer: DrawerNavigation(user: user),
     );
   }
 }

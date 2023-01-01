@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:login_app_firebase/auth/main_page.dart';
 import 'package:login_app_firebase/pages/goals_page.dart';
 import 'package:login_app_firebase/pages/home_page.dart';
-import 'package:login_app_firebase/pages/home_page_test.dart';
 import 'package:login_app_firebase/pages/leaderboard_page.dart';
 import 'package:login_app_firebase/pages/quiz_page.dart';
 import 'package:login_app_firebase/utils/app_routes.dart';

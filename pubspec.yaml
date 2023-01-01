@@ -74,6 +74,12 @@ flutter:
     - assets/lottie/loading-animation-blue.json
     - assets/images/menu.png
     - assets/images/background-image-for-navigation-drawer.png
+    - assets/images/leaderboard.png
+    - assets/images/brain.png
+    - assets/images/goal.png
+    - assets/images/house.png
+    - assets/images/check-out.png
+    - 
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

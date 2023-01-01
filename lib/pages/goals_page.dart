@@ -34,8 +34,6 @@ class _GoalsPageState extends State<GoalsPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      drawer: DrawerNavigation(user: user),
-  
     );
   }
 }

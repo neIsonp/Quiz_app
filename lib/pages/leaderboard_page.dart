@@ -35,7 +35,6 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      drawer: DrawerNavigation(user: user),
       body: StreamBuilder<List<UserModel>>(
         stream: readUsers(),
         builder: (context, snapshot) {

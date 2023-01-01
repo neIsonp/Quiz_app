@@ -59,7 +59,10 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                 }
               })),
           ListTile(
-            leading: const Icon(Icons.home_outlined),
+            leading: Image.asset(
+              'assets/images/house.png',
+              width: 25,
+            ),
             title: const Text('Home'),
             onTap: () => _navigationTo(
               context: context,
@@ -67,7 +70,7 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.quiz_outlined),
+            leading: Image.asset('assets/images/brain.png', width: 25),
             title: const Text('Quiz'),
             onTap: () => _navigationTo(
               context: context,
@@ -75,7 +78,7 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.flag),
+            leading: Image.asset('assets/images/goal.png', width: 25),
             title: const Text('Goals'),
             onTap: () => _navigationTo(
               context: context,
@@ -83,7 +86,7 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.leaderboard),
+            leading: Image.asset('assets/images/leaderboard.png', width: 25),
             title: const Text('LeaderBoard'),
             onTap: () => _navigationTo(
               context: context,
@@ -92,7 +95,7 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.logout),
+            leading: Image.asset('assets/images/check-out.png', width: 25),
             title: const Text('Logout'),
             onTap: signOut,
           ),

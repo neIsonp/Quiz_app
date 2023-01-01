@@ -3,9 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:login_app_firebase/components/drawer_navigation.dart';
-import 'package:login_app_firebase/data/current_user_data.dart';
-import 'package:login_app_firebase/repository/firestore_helper.dart';
-import 'package:login_app_firebase/repository/get_user_name.dart';
+
 import 'package:login_app_firebase/utils/app_routes.dart';
 
 import '../models/user_model.dart';
@@ -165,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(height: 3),
                                       Text(
                                         snapshot.data!['name'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -201,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(height: 3),
                                       Text(
                                         snapshot.data!['pontos'].toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -216,8 +214,8 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(height: 17),
                         const Divider(),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Tens cerca de 16 pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
+                        Text(
+                          'Tens cerca de ${snapshot.data!['pontos']} pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
                         ),
                         TextButton(
                           onPressed: () {
@@ -354,12 +352,3 @@ class _HomePageState extends State<HomePage> {
 Stream<List<UserModel>> readUsers() =>
     FirebaseFirestore.instance.collection('utils').snapshots().map((snapshot) =>
         snapshot.docs.map((docs) => UserModel.fromJson(docs.data())).toList());
-
-Future<DocumentSnapshot> getCurrentUser() async {
-  final user = FirebaseAuth.instance.currentUser;
-
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  CollectionReference usersCollection = firestore.collection('utils');
-  DocumentSnapshot currentUser = await usersCollection.doc(user!.email).get();
-  return currentUser;
-}
