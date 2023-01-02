@@ -6,11 +6,11 @@ class FirestoreHelper {
     await FirebaseFirestore.instance.collection(collection).add(data);
   }
 
-  // Get all documents in a collection
+
   static Future<List<DocumentSnapshot>> getDocuments(String collection) async {
     QuerySnapshot snapshot =
         await FirebaseFirestore.instance.collection(collection).get();
-    return snapshot.docs;
+    return snapshot.docs; 
   }
 
   static Future<void> updateDocument(
@@ -21,7 +21,7 @@ class FirestoreHelper {
         .update(data);
   }
 
-  // Delete a document from a collection
+
   static Future<void> deleteDocument(String collection, String documentId) async {
     await FirebaseFirestore.instance
         .collection(collection)

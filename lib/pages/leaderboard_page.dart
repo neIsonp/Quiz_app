@@ -56,7 +56,7 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
 
   Widget buildUser(UserModel user) => ListTile(
         leading: CircleAvatar(
-          child: Text('${user.pontos}'),
+          child: Text('${user.score}'),
         ),
         title: Text(user.name),
         subtitle: Text(user.email),

@@ -22,6 +22,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
 
+  bool obscureText = false;
+  bool obscureTextConfirmPassword = false;
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -55,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
         addUserDetails(UserModel(
           name: _firstNameController.text,
           email: _emailController.text,
-          pontos: 0,
+          score: 0,
         ));
       }
 
@@ -148,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextField(
                     controller: _passwordController,
-                    obscureText: true,
+                    obscureText: obscureText,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -157,6 +160,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
+                      ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        child: obscureText
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(
+                                Icons.visibility,
+                                color: Colors.green,
+                              ),
                       ),
                       border: InputBorder.none,
                       hintText: 'Password',
@@ -170,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextField(
                     controller: _confirmPasswordController,
-                    obscureText: true,
+                    obscureText: obscureTextConfirmPassword,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -179,6 +195,20 @@ class _RegisterPageState extends State<RegisterPage> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                         borderRadius: BorderRadius.circular(12),
+                      ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            obscureTextConfirmPassword =
+                                !obscureTextConfirmPassword;
+                          });
+                        },
+                        child: obscureTextConfirmPassword
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(
+                                Icons.visibility,
+                                color: Colors.green,
+                              ),
                       ),
                       border: InputBorder.none,
                       hintText: 'Confirm Password',

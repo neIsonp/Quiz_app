@@ -36,7 +36,7 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                   .snapshots(),
               builder: ((context, snapshot) {
                 if (!snapshot.hasData) {
-                  return CircularProgressIndicator();
+                  return Container();
                 } else {
                   return UserAccountsDrawerHeader(
                     decoration: const BoxDecoration(

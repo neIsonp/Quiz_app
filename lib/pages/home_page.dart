@@ -5,6 +5,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:login_app_firebase/components/drawer_navigation.dart';
 
 import 'package:login_app_firebase/utils/app_routes.dart';
+import 'package:lottie/lottie.dart';
 
 import '../models/user_model.dart';
 
@@ -22,31 +23,35 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerNavigation(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 350,
-            child: Stack(
-              children: [appBarCurve(), AppBarBalance()],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 350,
+              child: Stack(
+                children: [appBarCurve(), AppBarBalance()],
+              ),
             ),
-          ),
-          getNavigation(),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 35),
-            child: Column(
-              children: const [
-                Text(
-                  'Outros jogadores',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+            getNavigation(),
+            // StreamBuilder<List<UserModel>>(
+            //   stream: readUsers(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasError) {
+            //       return Text('algo de errado: ${snapshot.hasError}');
+            //     } else if (snapshot.hasData) {
+            //       final users = snapshot.data;
+
+            //       return ListView(
+            //         children: users!.map(buildUser).toList(),
+            //       );
+            //     } else {
+            //       return CircularProgressIndicator();
+            //     }
+            //   },
+            // ),
+          ],
+        ),
       ),
     );
   }
@@ -198,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       const SizedBox(height: 3),
                                       Text(
-                                        snapshot.data!['pontos'].toString(),
+                                        snapshot.data!['score'].toString(),
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
@@ -215,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                         const Divider(),
                         const SizedBox(height: 10),
                         Text(
-                          'Tens cerca de ${snapshot.data!['pontos']} pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
+                          'Tens cerca de ${snapshot.data!['score']} pontos, caso queiras saber como ganhar mais, clique no botão abaixo.',
                         ),
                         TextButton(
                           onPressed: () {
@@ -236,8 +241,6 @@ class _HomePageState extends State<HomePage> {
         }
       },
     );
-
-    //
   }
 
   Widget getNavigation() {
@@ -342,7 +345,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildUser(UserModel user) => ListTile(
         leading: CircleAvatar(
-          child: Text('${user.pontos}'),
+          child: Text('${user.score}'),
         ),
         title: Text(user.name),
         subtitle: Text(user.email),
