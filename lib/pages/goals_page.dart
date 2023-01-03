@@ -34,6 +34,7 @@ class _GoalsPageState extends State<GoalsPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
+      body: const Center(child: Text('goals page')),
     );
   }
 }

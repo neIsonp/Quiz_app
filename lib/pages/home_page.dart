@@ -167,7 +167,12 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       const SizedBox(height: 3),
                                       Text(
-                                        snapshot.data!['name'],
+                                        snapshot.data!['name']
+                                                .toString()
+                                                .toUpperCase()[0] +
+                                            snapshot.data!['name']
+                                                .toString()
+                                                .substring(1),
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,

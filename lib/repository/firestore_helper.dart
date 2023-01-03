@@ -16,6 +16,7 @@ class FirestoreHelper {
   static Future<void> updateDocument(
       String collection, String documentId, Map<String, dynamic> data) async {
     await FirebaseFirestore.instance
+    
         .collection(collection)
         .doc(documentId)
         .update(data);

@@ -40,10 +40,13 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                 } else {
                   return UserAccountsDrawerHeader(
                     decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/background-image-for-navigation-drawer.png'),
-                        fit: BoxFit.cover,
+                      // image: DecorationImage(
+                      //   image: AssetImage(
+                      //       'assets/images/background-image-for-navigation-drawer.png'),
+                      //   fit: BoxFit.cover,
+                      // ),
+                      gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.green],
                       ),
                     ),
                     currentAccountPicture: CircleAvatar(
@@ -53,7 +56,9 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                         width: 50,
                       ),
                     ),
-                    accountName: Text(snapshot.data!['name']),
+                    accountName: Text(
+                        snapshot.data!['name'].toString().toUpperCase()[0] +
+                            snapshot.data!['name'].toString().substring(1)),
                     accountEmail: Text(user!.email.toString()),
                   );
                 }

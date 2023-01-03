@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -31,6 +32,18 @@ class _QuizPageState extends State<QuizPage> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
+      ),
+      body: const Center(
+          child:
+              Text('quiz page, FloatingActionButton só para testar o update,')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection('utils')
+              .doc(user!.email)
+              .update({'score': FieldValue.increment(1)});
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
