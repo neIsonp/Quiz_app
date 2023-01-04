@@ -34,22 +34,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             getNavigation(),
-            // StreamBuilder<List<UserModel>>(
-            //   stream: readUsers(),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasError) {
-            //       return Text('algo de errado: ${snapshot.hasError}');
-            //     } else if (snapshot.hasData) {
-            //       final users = snapshot.data;
-
-            //       return ListView(
-            //         children: users!.map(buildUser).toList(),
-            //       );
-            //     } else {
-            //       return CircularProgressIndicator();
-            //     }
-            //   },
-            // ),
+            Center(
+              child: LottieBuilder.asset(
+                'assets/lottie/game-animation.json',
+                width: 300,
+              ),
+            )
           ],
         ),
       ),

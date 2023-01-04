@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../components/drawer_navigation.dart';
+import '../utils/app_routes.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -33,17 +34,13 @@ class _QuizPageState extends State<QuizPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: const Center(
-          child:
-              Text('quiz page, FloatingActionButton só para testar o update,')),
+      body: const Center(child: Text('quiz page,')),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          FirebaseFirestore.instance
-              .collection('utils')
-              .doc(user!.email)
-              .update({'score': FieldValue.increment(1)});
+          FirebaseAuth.instance.signOut();
+          Navigator.of(context).pushNamed(AppRoutes.mainPage);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.logout),
       ),
     );
   }

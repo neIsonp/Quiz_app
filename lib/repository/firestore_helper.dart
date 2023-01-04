@@ -6,7 +6,6 @@ class FirestoreHelper {
     await FirebaseFirestore.instance.collection(collection).add(data);
   }
 
-
   static Future<List<DocumentSnapshot>> getDocuments(String collection) async {
     QuerySnapshot snapshot =
         await FirebaseFirestore.instance.collection(collection).get();
@@ -16,12 +15,10 @@ class FirestoreHelper {
   static Future<void> updateDocument(
       String collection, String documentId, Map<String, dynamic> data) async {
     await FirebaseFirestore.instance
-    
         .collection(collection)
         .doc(documentId)
         .update(data);
   }
-
 
   static Future<void> deleteDocument(String collection, String documentId) async {
     await FirebaseFirestore.instance

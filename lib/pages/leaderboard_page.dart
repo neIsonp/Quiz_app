@@ -45,74 +45,79 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                 width: 300,
                 repeat: false,
               ),
-              SingleChildScrollView(
-                child: Container(
-                  height: 500,
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance
-                        .collection('utils')
-                        .orderBy('score', descending: true)
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return Container();
-                      } else {
-                        List<DocumentSnapshot> documents = snapshot.data!.docs;
+              Container(
+                height: 500,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 10,
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: FirebaseFirestore.instance
+                      .collection('utils')
+                      .orderBy('score', descending: true)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Container();
+                    } else {
+                      List<DocumentSnapshot> documents = snapshot.data!.docs;
 
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: ListView.builder(
-                            itemCount: documents.length,
-                            itemBuilder: (context, index) {
-                              DocumentSnapshot document = documents[index];
-
-                              return Column(
-                                children: [
-                                  const SizedBox(height: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                      gradient: document['email'] == user!.email
-                                          ? const LinearGradient(
-                                              colors: [
-                                                Colors.blue,
-                                                Colors.green
-                                              ],
-                                            )
-                                          : null,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.05),
-                                          spreadRadius: 10,
-                                          blurRadius: 10,
-                                        ),
-                                      ],
-                                    ),
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        child: Text('${(index + 1)}'),
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: ListView.builder(
+                          itemCount: documents.length,
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot document = documents[index];
+                            return Column(
+                              children: [
+                                const SizedBox(height: 10),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    gradient: document['email'] == user!.email
+                                        ? const LinearGradient(
+                                            colors: [Colors.blue, Colors.green],
+                                          )
+                                        : null,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.05),
+                                        spreadRadius: 1,
+                                        blurRadius: 10,
                                       ),
-                                      title: Text(
-                                        document['name']
-                                                .toString()
-                                                .toUpperCase()[0] +
-                                            document['name']
-                                                .toString()
-                                                .substring(1),
-                                      ),
-                                      subtitle:
-                                          Text('Pontos: ${document['score']}'),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              );
-                            },
-                          ),
-                        );
-                      }
-                    },
-                  ),
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      child: Text('${(index + 1)}'),
+                                    ),
+                                    title: Text(
+                                      document['name']
+                                              .toString()
+                                              .toUpperCase()[0] +
+                                          document['name']
+                                              .toString()
+                                              .substring(1),
+                                    ),
+                                    subtitle:
+                                        Text('Pontos: ${document['score']}'),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      );
+                    }
+                  },
                 ),
               ),
             ],
