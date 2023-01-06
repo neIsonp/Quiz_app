@@ -86,6 +86,7 @@ flutter:
     - assets/images/house.png
     - assets/images/check-out.png
     - assets/lottie/trophy.json
+    - assets/lottie/runner.json
     - 
   #   - images/a_dot_ham.jpeg
 
