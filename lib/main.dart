@@ -5,6 +5,7 @@ import 'package:login_app_firebase/pages/goals_page.dart';
 import 'package:login_app_firebase/pages/home_page.dart';
 import 'package:login_app_firebase/pages/leaderboard_page.dart';
 import 'package:login_app_firebase/pages/quiz_page.dart';
+import 'package:login_app_firebase/pages/quizes/quiz_one.dart';
 import 'package:login_app_firebase/utils/app_routes.dart';
 import 'pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,11 +29,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       routes: {
-        AppRoutes.mainPage: (ctx) => const MainPage(),
-        AppRoutes.homePage: (ctx) => const HomePage(),
-        AppRoutes.quizPage: (ctx) => const QuizPage(),
-        AppRoutes.goalsPage: (ctx) => const GoalsPage(),
-        AppRoutes.leaderBoardPage: (ctx) => const LeaderBoardPage(),
+        AppRoutes.mainPage: (_) => const MainPage(),
+        AppRoutes.homePage: (_) => const HomePage(),
+        AppRoutes.quizPage: (_) => const QuizPage(),
+        AppRoutes.goalsPage: (_) => const GoalsPage(),
+        AppRoutes.leaderBoardPage: (_) => const LeaderBoardPage(),
+        AppRoutes.leaderBoardPageQuiz1: (_) => const QuizOne(),
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:login_app_firebase/components/drawer_navigation.dart';
 
 import 'package:login_app_firebase/utils/app_routes.dart';
@@ -78,13 +79,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text(
-                    'Eprosec',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    'Wiinon',
+                    style: GoogleFonts.pressStart2p().copyWith(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),

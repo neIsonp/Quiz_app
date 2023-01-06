@@ -89,6 +89,11 @@ flutter:
     - assets/images/check-out.png
     - assets/lottie/trophy.json
     - assets/lottie/runner.json
+    - assets/images/liberdade.png
+    - assets/images/igualdade.png
+    - assets/images/familia.png
+    - assets/images/ativista.png
+    - assets/images/direitosIdosos.png
     - 
   #   - images/a_dot_ham.jpeg
 

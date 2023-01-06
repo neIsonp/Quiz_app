@@ -88,39 +88,39 @@ class _QuizPageState extends State<QuizPage> {
                       padding: const EdgeInsets.all(25),
                       child: Column(
                         children: [
-                          QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
-                            description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          InkWell(
+                            onTap: () => Navigator.of(context).pushNamed(
+                              AppRoutes.leaderBoardPageQuiz1,
+                            ),
+                            child: QuestionCard(
+                              image: 'assets/images/liberdade.png',
+                              titleText: 'Direitos civis e liberdades',
+                              description:
+                                  'Liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                            ),
                           ),
                           QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
+                            image: 'assets/images/igualdade.png',
+                            titleText:
+                                'Direitos econômicos, sociais e culturais',
                             description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                                'Direito à alimentação, à educação, à saúde, ao trabalho, à moradia, ao lazer e ao acesso à cultura...',
                           ),
                           QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
+                            image: 'assets/images/familia.png',
+                            titleText: 'Direitos de família e crianças',
                             description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                                'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família, o direito à privacidade familiar, o direito à informação...',
                           ),
                           QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
+                            image: 'assets/images/ativista.png',
+                            titleText: 'Direitos das mulheres',
                             description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                                'o direito à igualdade de oportunidades e tratamento, o direito à não discriminação...',
                           ),
                           QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
-                            description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                          ),
-                          QuestionCard(
-                            image: 'assets/images/brain.png',
-                            titleText: 'Direitos civis e liberdades',
+                            image: 'assets/images/direitosIdosos.png',
+                            titleText: 'Direitos das pessoas idosas',
                             description:
                                 'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
                           ),

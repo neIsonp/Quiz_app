@@ -8,4 +8,5 @@ class AppRoutes {
   static const quizPage = '/quiz-page';
   static const goalsPage = '/goals-page';
   static const leaderBoardPage = '/leaderboard-page';
+  static const leaderBoardPageQuiz1 = '/leaderboardQuiz1-page';
 }
