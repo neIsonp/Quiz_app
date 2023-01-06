@@ -17,22 +17,6 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Colors.red,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent,
-        //   elevation: 0,
-        //   title: const Text(
-        //     'Quiz page',
-        //     style: TextStyle(color: Colors.black),
-        //   ),
-        //   leading: IconButton(
-        //     icon: const Icon(
-        //       Icons.arrow_back_ios_new,
-        //       color: Colors.green,
-        //     ),
-        //     onPressed: () => Navigator.of(context).pop(),
-        //   ),
-        // ),
         body: SafeArea(
       child: Container(
         height: MediaQuery.of(context).size.height,
@@ -96,53 +80,51 @@ class _QuizPageState extends State<QuizPage> {
               SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.only(left: 10, right: 10),
-                  child: Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 217, 238, 255),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(25),
-                        child: Column(
-                          children: [
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                            QuestionCard(
-                              image: 'assets/images/brain.png',
-                              titleText: 'Direitos civis e liberdades',
-                              description:
-                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
-                            ),
-                          ],
-                        ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 217, 238, 255),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(25),
+                      child: Column(
+                        children: [
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                          QuestionCard(
+                            image: 'assets/images/brain.png',
+                            titleText: 'Direitos civis e liberdades',
+                            description:
+                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -172,59 +154,66 @@ class _QuizPageState extends State<QuizPage> {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Flex(
+              direction: Axis.vertical,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: ColoredBox(
-                    color: Colors.blue.withOpacity(0.2),
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: Image.asset(image),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        titleText,
-                        style: const TextStyle(
-                          color: Colors.blue,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: ColoredBox(
+                        color: Colors.blue.withOpacity(0.2),
+                        child: SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: Image.asset(image),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, bottom: 15),
-                        child: Text(description),
-                      ),
-                      Row(
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppIconText(
-                            const Icon(
-                              Icons.help_outline_sharp,
+                          Text(
+                            titleText,
+                            style: const TextStyle(
                               color: Colors.blue,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
-                            '5 perguntas',
                           ),
-                          const SizedBox(width: 15),
-                          AppIconText(
-                            const Icon(
-                              Icons.timer,
-                              color: Colors.blue,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10, bottom: 15),
+                            child: Text(
+                              description,
                             ),
-                            '5 minutos',
                           ),
+                          Row(
+                            children: [
+                              AppIconText(
+                                const Icon(
+                                  Icons.help_outline_sharp,
+                                  color: Colors.blue,
+                                ),
+                                '5 perguntas',
+                              ),
+                              const SizedBox(width: 15),
+                              AppIconText(
+                                const Icon(
+                                  Icons.timer,
+                                  color: Colors.blue,
+                                ),
+                                '5 minutos',
+                              ),
+                            ],
+                          )
                         ],
-                      )
-                    ],
-                  ),
-                )
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
             Positioned(
