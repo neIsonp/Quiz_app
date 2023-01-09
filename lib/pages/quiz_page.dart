@@ -110,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                             image: 'assets/images/familia.png',
                             titleText: 'Direitos de família e crianças',
                             description:
-                                'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família, o direito à privacidade familiar, o direito à informação...',
+                                'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família...',
                           ),
                           QuestionCard(
                             image: 'assets/images/ativista.png',
