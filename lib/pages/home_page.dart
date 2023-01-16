@@ -65,20 +65,21 @@ class _HomePageState extends State<HomePage> {
           child: SafeArea(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Builder(
-                  builder: (context) => InkWell(
-                    onTap: () => Scaffold.of(context).openDrawer(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Image.asset(
-                        'assets/images/menu.png',
-                        color: Colors.white,
-                        width: 30,
-                      ),
-                    ),
-                  ),
-                ),
+                // Builder(
+                //   builder: (context) => InkWell(
+                //     onTap: () => Scaffold.of(context).openDrawer(),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(15.0),
+                //       child: Image.asset(
+                //         'assets/images/menu.png',
+                //         color: Colors.white,
+                //         width: 30,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text(
@@ -87,6 +88,16 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 18,
                       color: Colors.white,
                     ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.of(context).pushNamed(AppRoutes.mainPage);
+                  },
+                  icon: const Icon(
+                    Icons.logout,
+                    color: Colors.white,
                   ),
                 ),
               ],
