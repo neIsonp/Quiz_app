@@ -10,6 +10,7 @@ class QuizOne extends StatelessWidget {
     return QuizComponent(
       quizList: questionsQuizOne,
       title: "Direitos civis e liberdades",
+      numberQuiz: 1,
     );
   }
 }

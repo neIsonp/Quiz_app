@@ -12,6 +12,7 @@ class QuizTwo extends StatelessWidget {
     return QuizComponent(
       quizList: questionQuizTwo,
       title: "Direitos económicos, sociais e culturais",
+      numberQuiz: 2,
     );
   }
 }

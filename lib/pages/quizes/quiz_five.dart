@@ -12,6 +12,7 @@ class QuizFive extends StatelessWidget {
     return QuizComponent(
       quizList: questionQuizFive,
       title: "Direitos das pessoas idosas",
+      numberQuiz: 5,
     );
   }
 }

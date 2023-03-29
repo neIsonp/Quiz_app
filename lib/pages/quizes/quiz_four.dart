@@ -12,6 +12,7 @@ class QuizFour extends StatelessWidget {
     return QuizComponent(
       quizList: questionQuizFour,
       title: "Direitos das mulheres",
+      numberQuiz: 4,
     );
   }
 }

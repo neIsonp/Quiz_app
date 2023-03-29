@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +14,33 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   final user = FirebaseAuth.instance.currentUser;
+
+  bool quiz1 = false,
+      quiz2 = false,
+      quiz3 = false,
+      quiz4 = false,
+      quiz5 = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getInfoAboutQuizIsCompleted();
+  }
+
+  Future<void> getInfoAboutQuizIsCompleted() async {
+    DocumentReference docRef =
+        FirebaseFirestore.instance.collection('utils').doc(user!.email);
+
+    DocumentSnapshot docSnapshot = await docRef.get();
+
+    setState(() {
+      quiz1 = docSnapshot.get('quiz1');
+      quiz2 = docSnapshot.get('quiz2');
+      quiz3 = docSnapshot.get('quiz3');
+      quiz4 = docSnapshot.get('quiz4');
+      quiz5 = docSnapshot.get('quiz5');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,55 +117,84 @@ class _QuizPageState extends State<QuizPage> {
                       child: Column(
                         children: [
                           InkWell(
-                            onTap: () => Navigator.of(context).pushNamed(
-                              AppRoutes.pageQuiz1,
-                            ),
+                            onTap: () {
+                              handleQuizResult(
+                                context,
+                                quiz1,
+                                AppRoutes.pageQuiz1,
+                              );
+                            },
                             child: QuestionCard(
                               image: 'assets/images/liberdade.png',
                               titleText: 'Direitos civis e liberdades',
                               description:
                                   'Liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                              isCompleted: quiz1,
                             ),
                           ),
                           InkWell(
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(AppRoutes.pageQuiz2),
+                            onTap: () {
+                              handleQuizResult(
+                                context,
+                                quiz2,
+                                AppRoutes.pageQuiz2,
+                              );
+                            },
                             child: QuestionCard(
                               image: 'assets/images/igualdade.png',
                               titleText:
                                   'Direitos econômicos, sociais e culturais',
                               description:
                                   'Direito à alimentação, à educação, à saúde, ao trabalho, à moradia, ao lazer e ao acesso à cultura...',
+                              isCompleted: quiz2,
                             ),
                           ),
                           InkWell(
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(AppRoutes.pageQuiz3),
+                            onTap: () {
+                              handleQuizResult(
+                                context,
+                                quiz3,
+                                AppRoutes.pageQuiz3,
+                              );
+                            },
                             child: QuestionCard(
                               image: 'assets/images/familia.png',
                               titleText: 'Direitos de família e crianças',
                               description:
                                   'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família...',
+                              isCompleted: quiz3,
                             ),
                           ),
                           InkWell(
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(AppRoutes.pageQuiz4),
+                            onTap: () {
+                              handleQuizResult(
+                                context,
+                                quiz4,
+                                AppRoutes.pageQuiz4,
+                              );
+                            },
                             child: QuestionCard(
                               image: 'assets/images/ativista.png',
                               titleText: 'Direitos das mulheres',
                               description:
                                   'o direito à igualdade de oportunidades e tratamento, o direito à não discriminação...',
+                              isCompleted: quiz4,
                             ),
                           ),
                           InkWell(
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(AppRoutes.pageQuiz5),
+                            onTap: () {
+                              handleQuizResult(
+                                context,
+                                quiz5,
+                                AppRoutes.pageQuiz5,
+                              );
+                            },
                             child: QuestionCard(
                               image: 'assets/images/direitosIdosos.png',
                               titleText: 'Direitos das pessoas idosas',
                               description:
                                   'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                              isCompleted: quiz5,
                             ),
                           ),
                         ],
@@ -157,6 +214,7 @@ class _QuizPageState extends State<QuizPage> {
     required String image,
     required String titleText,
     required String description,
+    required bool isCompleted,
   }) {
     const double _padding = 10.0;
     return Container(
@@ -246,10 +304,15 @@ class _QuizPageState extends State<QuizPage> {
                       bottomRight: Radius.circular(10),
                     ),
                   ),
-                  child: const Icon(
-                    Icons.navigate_next_outlined,
-                    color: Colors.white,
-                  ),
+                  child: isCompleted
+                      ? const Icon(
+                          Icons.check_rounded,
+                          color: Colors.white,
+                        )
+                      : const Icon(
+                          Icons.navigate_next_outlined,
+                          color: Colors.white,
+                        ),
                 ),
               ),
             )
@@ -273,5 +336,31 @@ class _QuizPageState extends State<QuizPage> {
         )
       ],
     );
+  }
+
+  handleQuizResult(
+      BuildContext context, bool quizCompleted, String routeName) async {
+    if (quizCompleted) {
+      showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            title: const Text('Quiz Concluído'),
+            content: LottieBuilder.network(
+              "https://assets8.lottiefiles.com/packages/lf20_niyfyoqs.json",
+              width: 50,
+              repeat: false,
+            ),
+          );
+        },
+      );
+      await Future.delayed(const Duration(seconds: 2));
+      Navigator.of(context).pop();
+    } else {
+      Navigator.of(context).pushNamed(routeName);
+    }
   }
 }

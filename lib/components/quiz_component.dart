@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,10 +9,18 @@ import 'package:login_app_firebase/models/question_model.dart';
 import '../../data/dummy_data.dart';
 import '../pages/result_page.dart';
 
+int _score = 0;
+
 class QuizComponent extends StatelessWidget {
   final quizList;
   final String title;
-  const QuizComponent({super.key, required this.quizList, required this.title});
+  final int numberQuiz;
+
+  const QuizComponent(
+      {super.key,
+      required this.quizList,
+      required this.title,
+      required this.numberQuiz});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +39,10 @@ class QuizComponent extends StatelessWidget {
           ),
         ),
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-        child: QuestionWidget(quizList: quizList),
+        child: QuestionWidget(
+          quizList: quizList,
+          numberQuiz: numberQuiz,
+        ),
       ),
     );
   }
@@ -37,7 +50,13 @@ class QuizComponent extends StatelessWidget {
 
 class QuestionWidget extends StatefulWidget {
   final quizList;
-  const QuestionWidget({super.key, required this.quizList});
+  int numberQuiz;
+
+  QuestionWidget({
+    super.key,
+    required this.quizList,
+    required this.numberQuiz,
+  });
 
   @override
   State<QuestionWidget> createState() => _QuestionWidgetState();
@@ -46,7 +65,6 @@ class QuestionWidget extends StatefulWidget {
 class _QuestionWidgetState extends State<QuestionWidget> {
   late PageController _controller;
   int _questionNumber = 1;
-  int _score = 0;
   bool _isLocked = false;
 
   @override
@@ -83,7 +101,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               ),
             ),
             const SizedBox(height: 20),
-            _isLocked ? buildElevatedButton() : const SizedBox.shrink(),
+            _isLocked
+                ? buildElevatedButton(widget.numberQuiz)
+                : const SizedBox.shrink(),
           ],
         ),
       ),
@@ -125,7 +145,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
-  buildElevatedButton() {
+  buildElevatedButton(int numberQuiz) {
     return ElevatedButton(
       onPressed: () {
         if (_questionNumber < widget.quizList.length) {
@@ -139,6 +159,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             _isLocked = false;
           });
         } else {
+          updateScore(numberQuiz);
+
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -154,6 +176,21 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       ),
     );
   }
+}
+
+Future<void> updateScore(int numberQuiz) async {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  DocumentReference docRef = FirebaseFirestore.instance
+      .collection("utils")
+      .doc(auth.currentUser!.email);
+
+  final String quiz = "quiz$numberQuiz";
+
+  await docRef.update({
+    "score": FieldValue.increment(_score),
+    quiz: true,
+  });
 }
 
 class OptionsWidget extends StatelessWidget {

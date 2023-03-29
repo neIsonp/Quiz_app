@@ -12,6 +12,7 @@ class QuizThree extends StatelessWidget {
     return QuizComponent(
       quizList: questionQuizThree,
       title: "Direitos de família e crianças",
+      numberQuiz: 3,
     );
   }
 }

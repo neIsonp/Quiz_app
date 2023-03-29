@@ -59,6 +59,11 @@ class _RegisterPageState extends State<RegisterPage> {
           name: _firstNameController.text,
           email: _emailController.text,
           score: 0,
+          quiz1: false,
+          quiz2: false,
+          quiz3: false,
+          quiz4: false,
+          quiz5: false,
         ));
       }
 
