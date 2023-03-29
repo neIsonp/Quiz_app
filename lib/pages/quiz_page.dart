@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -341,24 +343,34 @@ class _QuizPageState extends State<QuizPage> {
   handleQuizResult(
       BuildContext context, bool quizCompleted, String routeName) async {
     if (quizCompleted) {
+      final completer = Completer<void>();
       showDialog<void>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            title: const Text('Quiz Concluído'),
-            content: LottieBuilder.network(
-              "https://assets8.lottiefiles.com/packages/lf20_niyfyoqs.json",
-              width: 50,
-              repeat: false,
+          Timer(const Duration(seconds: 2), () {
+            if (!completer.isCompleted) {
+              completer.complete();
+              Navigator.of(context).pop();
+            }
+          });
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              title: const Text('Quiz Concluído'),
+              content: LottieBuilder.asset(
+                "assets/lottie/green-check.json",
+                width: 200,
+                repeat: false,
+              ),
             ),
           );
         },
       );
-      await Future.delayed(const Duration(seconds: 2));
-      Navigator.of(context).pop();
+
+      await completer.future;
     } else {
       Navigator.of(context).pushNamed(routeName);
     }
