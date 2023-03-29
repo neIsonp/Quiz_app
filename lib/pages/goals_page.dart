@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:lottie/lottie.dart';
 
 import '../components/drawer_navigation.dart';
 import '../models/user_model.dart';
@@ -23,7 +24,7 @@ class _GoalsPageState extends State<GoalsPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          'Goals',
+          'Objetivos',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
@@ -34,7 +35,16 @@ class _GoalsPageState extends State<GoalsPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: const Center(child: Text('goals page')),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          LottieBuilder.asset(
+            "assets/lottie/resultAnimationStar.json",
+            width: 300,
+            repeat: true,
+          ),
+        ],
+      ),
     );
   }
 }

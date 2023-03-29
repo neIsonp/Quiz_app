@@ -67,7 +67,6 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                       return Container();
                     } else {
                       List<DocumentSnapshot> documents = snapshot.data!.docs;
-
                       return Padding(
                         padding: const EdgeInsets.only(left: 15, right: 15),
                         child: ListView.builder(

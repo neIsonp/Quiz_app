@@ -89,6 +89,7 @@ flutter:
     - assets/images/check-out.png
     - assets/lottie/trophy.json
     - assets/lottie/runner.json
+    - assets/lottie/resultAnimationStar.json
     - assets/images/liberdade.png
     - assets/images/igualdade.png
     - assets/images/familia.png

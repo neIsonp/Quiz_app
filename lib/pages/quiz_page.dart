@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-
 import '../utils/app_routes.dart';
 
 class QuizPage extends StatefulWidget {
@@ -14,6 +13,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +90,7 @@ class _QuizPageState extends State<QuizPage> {
                         children: [
                           InkWell(
                             onTap: () => Navigator.of(context).pushNamed(
-                              AppRoutes.leaderBoardPageQuiz1,
+                              AppRoutes.pageQuiz1,
                             ),
                             child: QuestionCard(
                               image: 'assets/images/liberdade.png',
@@ -99,30 +99,46 @@ class _QuizPageState extends State<QuizPage> {
                                   'Liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
                             ),
                           ),
-                          QuestionCard(
-                            image: 'assets/images/igualdade.png',
-                            titleText:
-                                'Direitos econômicos, sociais e culturais',
-                            description:
-                                'Direito à alimentação, à educação, à saúde, ao trabalho, à moradia, ao lazer e ao acesso à cultura...',
+                          InkWell(
+                            onTap: () => Navigator.of(context)
+                                .pushNamed(AppRoutes.pageQuiz2),
+                            child: QuestionCard(
+                              image: 'assets/images/igualdade.png',
+                              titleText:
+                                  'Direitos econômicos, sociais e culturais',
+                              description:
+                                  'Direito à alimentação, à educação, à saúde, ao trabalho, à moradia, ao lazer e ao acesso à cultura...',
+                            ),
                           ),
-                          QuestionCard(
-                            image: 'assets/images/familia.png',
-                            titleText: 'Direitos de família e crianças',
-                            description:
-                                'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família...',
+                          InkWell(
+                            onTap: () => Navigator.of(context)
+                                .pushNamed(AppRoutes.pageQuiz3),
+                            child: QuestionCard(
+                              image: 'assets/images/familia.png',
+                              titleText: 'Direitos de família e crianças',
+                              description:
+                                  'O direito à convivência familiar e à proteção da família, o direito à igualdade entre os membros da família...',
+                            ),
                           ),
-                          QuestionCard(
-                            image: 'assets/images/ativista.png',
-                            titleText: 'Direitos das mulheres',
-                            description:
-                                'o direito à igualdade de oportunidades e tratamento, o direito à não discriminação...',
+                          InkWell(
+                            onTap: () => Navigator.of(context)
+                                .pushNamed(AppRoutes.pageQuiz4),
+                            child: QuestionCard(
+                              image: 'assets/images/ativista.png',
+                              titleText: 'Direitos das mulheres',
+                              description:
+                                  'o direito à igualdade de oportunidades e tratamento, o direito à não discriminação...',
+                            ),
                           ),
-                          QuestionCard(
-                            image: 'assets/images/direitosIdosos.png',
-                            titleText: 'Direitos das pessoas idosas',
-                            description:
-                                'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                          InkWell(
+                            onTap: () => Navigator.of(context)
+                                .pushNamed(AppRoutes.pageQuiz5),
+                            child: QuestionCard(
+                              image: 'assets/images/direitosIdosos.png',
+                              titleText: 'Direitos das pessoas idosas',
+                              description:
+                                  'liberdade de expressão, direito à igualdade perante a lei, direito de voto, o direito à privacidade...',
+                            ),
                           ),
                         ],
                       ),
