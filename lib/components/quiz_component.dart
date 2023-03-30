@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_app_firebase/models/question_model.dart';
+import 'package:login_app_firebase/utils/app_routes.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../data/dummy_data.dart';
 import '../pages/result_page.dart';
@@ -161,18 +165,53 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         } else {
           updateScore(numberQuiz);
 
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ResultPage(score: _score),
-            ),
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                title: const Text('Resultado do quiz'),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    LottieBuilder.asset(
+                      _score < 2
+                          ? "assets/lottie/bad-emoji.json"
+                          : "assets/lottie/star.json",
+                      width: 200,
+                      repeat: true,
+                    ),
+                    Text(
+                      "Ganhaste $_score pontos!",
+                      style: GoogleFonts.poppins(fontSize: 18),
+                    )
+                  ],
+                ),
+                contentPadding: const EdgeInsets.symmetric(vertical: 50),
+              );
+            },
           );
+
+          Future.delayed(const Duration(seconds: 3)).then((value) {
+            Navigator.pop(context);
+            Navigator.of(context).pop(true);
+          });
+
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => ResultPage(score: _score),
+          //   ),
+          // );
         }
       },
       child: Text(
         _questionNumber < widget.quizList.length
             ? 'Proxima página'
-            : 'ver resultados',
+            : 'Ver resultados',
       ),
     );
   }

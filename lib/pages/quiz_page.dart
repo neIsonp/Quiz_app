@@ -372,7 +372,9 @@ class _QuizPageState extends State<QuizPage> {
 
       await completer.future;
     } else {
-      Navigator.of(context).pushNamed(routeName);
+      Navigator.of(context)
+          .pushNamed(routeName)
+          .then((value) => getInfoAboutQuizIsCompleted());
     }
   }
 }

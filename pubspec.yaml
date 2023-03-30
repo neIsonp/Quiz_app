@@ -96,6 +96,8 @@ flutter:
     - assets/images/ativista.png
     - assets/images/direitosIdosos.png
     - assets/lottie/green-check.json
+    - assets/lottie/star.json
+    - assets/lottie/bad-emoji.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

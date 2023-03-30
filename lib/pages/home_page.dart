@@ -81,12 +81,13 @@ class _HomePageState extends State<HomePage> {
                 //   ),
                 // ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Text(
                     'Wiinon',
-                    style: GoogleFonts.pressStart2p().copyWith(
-                      fontSize: 18,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 20,
                       color: Colors.white,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -280,7 +281,7 @@ class _HomePageState extends State<HomePage> {
               ),
               itemNavigation(
                 size: size,
-                namePage: 'Goals',
+                namePage: 'Objetivos',
                 icon: Icons.flag,
                 routeName: AppRoutes.goalsPage,
               ),
