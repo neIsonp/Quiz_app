@@ -3,7 +3,7 @@ import 'package:login_app_firebase/models/question_model.dart';
 final questionsQuizOne = [
   Question(
     text:
-        'Quais são os direitos fundamentais garantidos pela Constituição Brasileira?',
+        'Quais são os direitos fundamentais garantidos pela Constituição Portuguesa?',
     options: [
       Option(
         text: 'Direito à vida, à educação, à saúde e à propriedade',
@@ -347,22 +347,22 @@ final questionQuizThree = [
     options: [
       Option(
         text:
-            'Ela é uma lei brasileira que define medidas de proteção às mulheres vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressores.',
+            'Ela é uma lei que define medidas de proteção às mulheres vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressores.',
         isCorrect: true,
       ),
       Option(
         text:
-            'Ela é uma lei brasileira que define medidas de proteção aos homens vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressoras.',
+            'Ela é uma lei que define medidas de proteção aos homens vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressoras.',
         isCorrect: false,
       ),
       Option(
         text:
-            'Ela é uma lei internacional que define medidas de proteção às mulheres vítimas de violência doméstica e familiar, mas que não tem impacto na legislação brasileira.',
+            'Ela é uma lei internacional que define medidas de proteção às mulheres vítimas de violência doméstica e familiar, mas que não tem impacto na legislação Portuguesa.',
         isCorrect: false,
       ),
       Option(
         text:
-            'Ela é uma lei brasileira que define medidas de proteção às crianças vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressores.',
+            'Ela é uma lei que define medidas de proteção às crianças vítimas de violência doméstica e familiar, incluindo a criação de juizados especializados e o aumento das penas para agressores.',
         isCorrect: false,
       )
     ],
@@ -424,7 +424,7 @@ final questionQuizFour = [
     options: [
       Option(
         text:
-            'É uma lei brasileira que visa proteger as mulheres da violência doméstica e familiar, prevendo medidas de assistência e proteção às vítimas, bem como a punição aos agressores.',
+            'É uma lei que visa proteger as mulheres da violência doméstica e familiar, prevendo medidas de assistência e proteção às vítimas, bem como a punição aos agressores.',
         isCorrect: true,
       ),
       Option(
@@ -502,7 +502,7 @@ final questionQuizFive = [
     options: [
       Option(
         text:
-            'É uma lei brasileira que estabelece direitos e garantias às pessoas com idade igual ou superior a 60 anos.',
+            'É uma lei que estabelece direitos e garantias às pessoas com idade igual ou superior a 60 anos.',
         isCorrect: true,
       ),
       Option(

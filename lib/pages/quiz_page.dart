@@ -299,9 +299,9 @@ class _QuizPageState extends State<QuizPage> {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    color: isCompleted ? Colors.white : Colors.blue,
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10),
                     ),
@@ -309,7 +309,7 @@ class _QuizPageState extends State<QuizPage> {
                   child: isCompleted
                       ? const Icon(
                           Icons.check_rounded,
-                          color: Colors.white,
+                          color: Colors.green,
                         )
                       : const Icon(
                           Icons.navigate_next_outlined,

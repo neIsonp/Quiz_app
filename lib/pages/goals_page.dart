@@ -36,11 +36,56 @@ class _GoalsPageState extends State<GoalsPage> {
         ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LottieBuilder.asset(
-            "assets/lottie/resultAnimationStar.json",
+          const SizedBox(height: 80),
+          Container(
+            margin: const EdgeInsets.only(left: 20),
             width: 300,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Quizz",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Dos direitos humanos",
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  "Responda perguntas sobre direitos humanos em várias áreas, ganhe pontos e suba no ranking do aplicativo.",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 50),
+          LottieBuilder.asset(
+            "assets/lottie/quiz-mode.json",
+            width: 400,
             repeat: true,
           ),
         ],

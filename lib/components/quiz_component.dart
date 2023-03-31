@@ -276,7 +276,7 @@ class OptionsWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 option.text,
-                style: const TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 15),
               ),
             ),
             icon ?? const Icon(Icons.abc, color: Colors.transparent),

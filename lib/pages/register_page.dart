@@ -22,8 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
 
-  bool obscureText = false;
-  bool obscureTextConfirmPassword = false;
+  bool obscureText = true;
+  bool obscureTextConfirmPassword = true;
 
   @override
   void dispose() {

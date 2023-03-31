@@ -98,6 +98,7 @@ flutter:
     - assets/lottie/green-check.json
     - assets/lottie/star.json
     - assets/lottie/bad-emoji.json
+    - assets/lottie/quiz-mode.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
