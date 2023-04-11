@@ -150,11 +150,6 @@ final questionQuizTwo = [
     options: [
       Option(
         text:
-            'São direitos que garantem a todos a igualdade de oportunidades, acesso à educação e à cultura, lazer e segurança.',
-        isCorrect: true,
-      ),
-      Option(
-        text:
             'São direitos que garantem a liberdade de expressão e de associação.',
         isCorrect: false,
       ),
@@ -165,7 +160,12 @@ final questionQuizTwo = [
       Option(
         text: 'São direitos que garantem a todos a igualdade perante a lei.',
         isCorrect: false,
-      )
+      ),
+      Option(
+        text:
+            'São direitos que garantem a todos a igualdade de oportunidades, acesso à educação e à cultura, lazer e segurança.',
+        isCorrect: true,
+      ),
     ],
   ),
   Question(
@@ -196,13 +196,13 @@ final questionQuizTwo = [
     options: [
       Option(
         text:
-            'Eles garantem a dignidade e o bem-estar das pessoas, promovendo a igualdade social e a justiça.',
-        isCorrect: true,
+            'Eles são importantes apenas para pessoas que vivem em países desenvolvidos.',
+        isCorrect: false,
       ),
       Option(
         text:
-            'Eles são importantes apenas para pessoas que vivem em países desenvolvidos.',
-        isCorrect: false,
+            'Eles garantem a dignidade e o bem-estar das pessoas, promovendo a igualdade social e a justiça.',
+        isCorrect: true,
       ),
       Option(
         text:
@@ -374,11 +374,6 @@ final questionQuizFour = [
     text: 'O que é o feminicídio?',
     options: [
       Option(
-        text:
-            'É o assassinato de uma mulher cometido em razão de sua condição de mulher, caracterizado pela violência doméstica ou familiar ou pelo menosprezo ou discriminação à condição de mulher.',
-        isCorrect: true,
-      ),
-      Option(
         text: 'É o assassinato de uma mulher cometido por uma mulher.',
         isCorrect: false,
       ),
@@ -386,6 +381,11 @@ final questionQuizFour = [
         text:
             'É o assassinato de uma mulher cometido por um homem, mas que não tem relação com sua condição de mulher.',
         isCorrect: false,
+      ),
+      Option(
+        text:
+            'É o assassinato de uma mulher cometido em razão de sua condição de mulher, caracterizado pela violência doméstica ou familiar ou pelo menosprezo ou discriminação à condição de mulher.',
+        isCorrect: true,
       ),
       Option(
         text:
@@ -424,13 +424,13 @@ final questionQuizFour = [
     options: [
       Option(
         text:
-            'É uma lei que visa proteger as mulheres da violência doméstica e familiar, prevendo medidas de assistência e proteção às vítimas, bem como a punição aos agressores.',
-        isCorrect: true,
+            'É uma lei que proíbe as mulheres de trabalharem em determinadas áreas consideradas perigosas.',
+        isCorrect: false,
       ),
       Option(
         text:
-            'É uma lei que proíbe as mulheres de trabalharem em determinadas áreas consideradas perigosas.',
-        isCorrect: false,
+            'É uma lei que visa proteger as mulheres da violência doméstica e familiar, prevendo medidas de assistência e proteção às vítimas, bem como a punição aos agressores.',
+        isCorrect: true,
       ),
       Option(
         text:
@@ -474,13 +474,13 @@ final questionQuizFour = [
     options: [
       Option(
         text:
-            'É o princípio segundo o qual homens e mulheres devem ter os mesmos direitos e oportunidades em todas as esferas da vida, sem discriminação baseada no gênero.',
-        isCorrect: true,
+            'É o princípio segundo o qual homens e mulheres devem ter papéis diferentes na sociedade, de acordo com suas habilidades e características biológicas.',
+        isCorrect: false,
       ),
       Option(
         text:
-            'É o princípio segundo o qual homens e mulheres devem ter papéis diferentes na sociedade, de acordo com suas habilidades e características biológicas.',
-        isCorrect: false,
+            'É o princípio segundo o qual homens e mulheres devem ter os mesmos direitos e oportunidades em todas as esferas da vida, sem discriminação baseada no gênero.',
+        isCorrect: true,
       ),
       Option(
         text:
@@ -527,11 +527,6 @@ final questionQuizFive = [
     options: [
       Option(
         text:
-            'São direitos que visam garantir a dignidade, a liberdade, a integridade física e psicológica das pessoas idosas, como o direito à vida, à privacidade, à intimidade, à imagem, à honra e ao nome.',
-        isCorrect: true,
-      ),
-      Option(
-        text:
             'São direitos que visam garantir a propriedade, a herança e a posse dos bens das pessoas idosas.',
         isCorrect: false,
       ),
@@ -539,6 +534,11 @@ final questionQuizFive = [
         text:
             'São direitos que visam garantir a participação política e social das pessoas idosas, como o direito de votar e ser votado.',
         isCorrect: false,
+      ),
+      Option(
+        text:
+            'São direitos que visam garantir a dignidade, a liberdade, a integridade física e psicológica das pessoas idosas, como o direito à vida, à privacidade, à intimidade, à imagem, à honra e ao nome.',
+        isCorrect: true,
       ),
       Option(
         text:
@@ -602,11 +602,6 @@ final questionQuizFive = [
     options: [
       Option(
         text:
-            'É qualquer ação ou omissão que cause danos físicos, psicológicos, sexuais, patrimoniais ou morais a uma pessoa idosa, seja em âmbito doméstico, institucional ou social.',
-        isCorrect: true,
-      ),
-      Option(
-        text:
             'É uma prática comum em que as pessoas idosas são colocadas em situações de risco ou perigo em benefício de outras pessoas ou instituições.',
         isCorrect: false,
       ),
@@ -619,7 +614,12 @@ final questionQuizFive = [
         text:
             'É uma prática comum em que as pessoas idosas são impedidas de participar de atividades sociais e culturais em benefício de outras pessoas ou instituições.',
         isCorrect: false,
-      )
+      ),
+      Option(
+        text:
+            'É qualquer ação ou omissão que cause danos físicos, psicológicos, sexuais, patrimoniais ou morais a uma pessoa idosa, seja em âmbito doméstico, institucional ou social.',
+        isCorrect: true,
+      ),
     ],
   ),
 ];

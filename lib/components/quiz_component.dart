@@ -196,6 +196,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           );
 
           Future.delayed(const Duration(seconds: 3)).then((value) {
+            _score = 0;
             Navigator.pop(context);
             Navigator.of(context).pop(true);
           });
